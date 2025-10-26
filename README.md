@@ -1,5 +1,22 @@
-# sv
+# Svelte Web Countdown
 
+The purpose of this is to get some practice in working with svelte and
+sveletekit. 
+
+## Features to add
+- sidebar with config settings
+    - Input box for setting the target date
+    - dark/light mode switch
+    - name of upcoming topic
+    - list of previous topics
+    - admin login
+
+## Some useful tidbits 
+- Main development should be in src/routes
+- Reusable functions can go into src/lib/utils.js
+    - functions here need to have to start with the export keywork
+
+# Sveltekit Instructions
 Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
 
 ## Creating a project
