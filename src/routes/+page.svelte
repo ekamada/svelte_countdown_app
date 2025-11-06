@@ -1,42 +1,57 @@
 
 
-<div class='test'>
+
+<div class='main'>
  <h1>
   Cool Cats Countdown
  </h1>
  
  <div class='countdown'>
   {result} <br>
-  <p>
-   {targetDate}
-  </p>
+  <div>
+   {targetDate} <br>
+   <form onsubmit={setNewTarget}>
+     <input type='date' bind:value={targetDate}> <input type='time' bind:value={targetTime}> 
+     <button type="submit">Confirm</button>
+   </form>
+  </div>
  </div>
  
-
  <!-- Empty div used for spacing -->
  <div></div>
 </div>
-
 
    
 <script lang="ts">
     import * as utils from '$lib/utils.js';
 
-    const targetDate = "Nov 4, 2025 19:30:00"
-    const targetTime = new Date(targetDate).getTime()
+    const defaultDate = "Nov 17, 2025"
+    const defaultTime = "19:30:00"
 
+    let targetDate  = defaultDate
+    let targetTime  = defaultTime
+    let newDateTime = new Date(targetDate +" "+targetTime).getTime()
     let result : String = $state('')
 
-    setInterval(function() {
-        result = utils.get_time_remaining(targetTime)
-        }, 1000)
+    console.log(targetDate)
+    console.log(targetTime)
 
+    function setNewTarget() {
+        console.log(targetDate)
+        console.log(targetTime)
+        newDateTime = new Date(targetDate+" "+targetTime).getTime()
+    }
+
+
+
+    setInterval(function() {
+        result = utils.get_time_remaining(newDateTime)
+        }, 1000)
 </script>
 
 
 <style>
-
-    .test {
+    .main {
         height  : 100vh;
         font-family:'Courier New', Courier, monospace;
         display         : flex;
@@ -47,11 +62,10 @@
 
     .countdown {
         font-size: 3em;    
+        text-align: center;
     }
 
     .countdown p {
         font-size: 0.5em;
-        text-align: center;
     }
-
 </style>
