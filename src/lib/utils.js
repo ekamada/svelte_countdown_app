@@ -1,4 +1,13 @@
 
+const dateOptions= {
+            year:     'numeric',
+            month:    'long',
+            day:      'numeric',
+            timeZone: 'UTC'
+        };
+
+export const dateFormat  = new Intl.DateTimeFormat(undefined,dateOptions)
+
 
 export function get_time_remaining(target_time) {
     let now = new Date().getTime()
